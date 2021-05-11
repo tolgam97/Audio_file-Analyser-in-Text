@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="static/HelpPageStyle.css">
+<body style="background-color:#C0C0C0;">
+
+<style>
+div.container {
+        text-align:center;
+}
+</style>
+
+<div class="container">
+        <div class="jumbotron text-center">
+            <h2>Help Page</h2>
+            <p align="center"><a href="/" ><button class="btn btn-primary" style="height:40px;width:60px">Home</button></a></p>
+        </div>
+        
+<style>
+div.box {
+        background-color: #B0C4DE
+}
+</style>
+        
+</div>
+<div class="box">
+    <h1>Most asked Questions will be answered below</h1>
+    <p style="background-color:blue"; class="heading">FAQs</p>
+    <form action="{{ url_for('get_help') }}" method=post>
+        
+        <div class="faqs">
+            <details>
+                <summary>What other Languages will be available to translate in future?</summary>
+                <p class="text">we will be adding two more Languages Spanish and hindi</p>
+              </details>
+              <details>
+                  <summary>ia there future work's to improve the website?</summary>
+                 <p class="text">in the future we are thinking of adding a Gender recognition of 
+                 the person speaking in the Audio file's also we are going to add a chatbot for the
+                 user's to communicate with us much more faster.</p>
+              </details>
+              <details>
+                 <summary>What type of Audio file's can be transcribed to text?</summary>
+                 <p class="text">The Audio file type's that can be transcribe are
+                 WAV,AIFF,AIFF-C and FLAC</p>
+              </details>
+        </div>
+</form>
+</div>
+
+
+<div class="box">
+    <h1>NLP Techniques Guide</h1>
+    <p style="background-color:blue"; class="heading">Info on Natural Language Processing Techniques</p>
+    <form action="{{ url_for('get_help') }}" method=post>
+        
+        <div class="info on nlp Techniques Chosen">
+            <details>
+                <summary>Text Summarzation</summary>Text Summarization is a NLP Technique that give's
+                key point's of a text more information on:<a href="https://blog.aureusanalytics.com/blog/5-natural-language-processing-techniques-for-extracting-information#:~:text=5%20Natural%20Language%20Processing%20Techniques%20for%20Extracting%20Information,4%20Aspect%20Mining.%20...%205%20Topic%20Modeling.%20">Text Summarzation</a></p>
+              </details>
+              <details>
+                <summary>Sentiment Analysis</summary>Sentiment Analysis is a NLP Technique that give's
+                opinion of a text which can be positive or negative more information on:<a href="https://blog.aureusanalytics.com/blog/5-natural-language-processing-techniques-for-extracting-information#:~:text=5%20Natural%20Language%20Processing%20Techniques%20for%20Extracting%20Information,4%20Aspect%20Mining.%20...%205%20Topic%20Modeling.%20">Sentiment Analysis</a></p>
+              </details>
+              <details>
+                <summary>Speech Recognition</summary>Speech Recognition is part of NLP that is mainly used
+                for interaction between human and machine using speech and text more information on:<a href="http://www.differencebetween.net/technology/difference-between-speech-recognition-and-natural-language-processing/#:~:text=NLP%20is%20a%20technology%20used%20to%20simplify%20speech,great%20advantages%20for%20many%20types%20of%20human-machine%20communication.">Speech Recognition</a></p>
+              </details>
+              <details>
+                <summary>Machine Translation</summary>Machine Translation is part of NLP that is mainly used
+                for translating between different languages more information on:<a href="https://www.upgrad.com/blog/machine-translation-in-nlp/">Machine Translation</a></p>
+              </details>
+              
+        </div>
+</form>
+</div>
+
+ 

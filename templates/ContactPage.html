@@ -1,0 +1,43 @@
+<!-- add the right css file -->
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='ContactPageStyle.css')}}">
+{% endblock %}
+
+<!-- here we add our contact forms -->
+{% block content %}
+<div class="contact">
+    <h3>Contact us</h3>
+    <body style="background-color:#C0C0C0;">
+    <form action="{{ url_for('User_contact') }}" method=post>
+        <div>
+            <!-- name forms -->
+            <p>
+                {{ UserContactForm.name.label }} <br>
+                {{ UserContactForm.name(placeholder='Your name') }}
+            </p>
+            <!-- email forms -->
+            <p>
+                {{ UserContactForm.email.label }} <br>
+                {{ UserContactForm.email(placeholder='Your e-mail ...') }}
+            </p>
+            <!-- Subject of your request -->
+            <p>
+                {{UserContactForm.subject.label }}<br>
+                {{UserContactForm.subject(placeholder='Your subject ...')}}
+            </p>
+            <!-- Content of your request -->
+            <p>
+                {{ UserContactForm.message.label }}<br>
+                {{ UserContactForm.message(placeholder='write your request ...') }}
+            </p>
+            <!-- Submit button -->
+            <p>
+                {{ UserContactForm.submit }}
+            </p>
+        </div>
+        <br>
+        <input type="submit" align="center" name="Home" value="Home" class="btn btn-primary" style="height:40px;width:1430px; background-color:#B0C4DE"/>
+    </form>
+    <a href="{{url_for('User_contact')}}" align="center" type="button" class="btn btn-primary" style="height:40px;width:1430px; background-color:#B0C4DE">Reset</a>
+</div>
+{% endblock %}

@@ -1,0 +1,280 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+</div>
+
+   <div class="container">
+        <div class="jumbotron text-center">
+            <h2>Audio File explore</h2>
+            <p align="center"><a href="/" ><button class="btn btn-primary" style="height:40px;width:60px">Home</button></a></p>
+        </div>
+        
+</div>
+ 
+
+
+<div class="container">
+    <header>
+    <h1>Upload your new File</h1>
+    </header>
+    <body style="background-color:#C0C0C0;">
+    <style type="text/css">
+    
+                    header {
+                      border-bottom: 1px solid #0000FF;
+                      margin-bottom: 2em;
+                    }
+    </style>
+    <form action="{{url_for('AudioFile')}}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="record" class="btn btn-primary">
+        <br>
+        <input type="submit" name="ConvertMe" id="submitButton" value="Convert" class="btn btn-primary">
+        <input type="submit" name="ClearMe" id="ClearButton" value="Clear" class="btn btn-primary">
+        <a href="{{url_for('NLPPage')}}" type="button" class="btn btn-primary">Reset</a>
+        <input type="submit" name="SaveMe" id="SaveButton" value="Convert & Save" class="btn btn-primary"/>
+        <br>
+    </form>
+    </div>
+    
+        
+
+    {% if Transcription != "" %}
+        <div id="speechToTextSoftware">
+        <div class="container">
+            <h1>Transcription</h1>
+            <b>Time Taken to convert: <span style="color:#0000FF;">{{final_time}} </span> Seconds </b>
+            <br>
+            <b>Text Converted:</b>
+            <p id="FromspeechToText">{{ Transcription }}</p>
+        </div>
+    {% endif %}
+    
+    
+
+<div class="container">
+    <form action="{{url_for('analyse')}}" method="POST" id="myForm1">
+    <br>
+    <br>
+    
+    <header>
+    <h1>Text Explore</h1>
+    </header>
+    <style type="text/css">
+    
+                    header {
+                      border-bottom: 1px solid #0000FF;
+                      margin-bottom: 2em;
+                    }
+    </style>
+    
+    <textarea name="plaintext" rows="3" cols="3" class="form-control">
+    
+    </textarea>
+    <br>
+    <input type="submit" name="SubmitMe" value="Submit only" class="btn btn-primary">
+    <input type="reset" name="ClearMe2" value="Clear" class="btn btn-primary">
+    <a href="{{url_for('NLPPage')}}" type="button" class="btn btn-primary">Reset</a>
+    <br>
+    <br>
+    <b> Languages available to translate: </b>
+    <br>
+    <br>
+    <input type="submit" name="GermanSubmit" value="German" class="btn btn-primary"/>
+    <input type="submit" name="FrenchSubmit" value="French" class="btn btn-primary"/>
+    <input type="submit" name="TurkishSubmit" value="Turkish" class="btn btn-primary"/>
+        
+    
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <div>
+                <br>
+                <b>Text Submitted:</b>
+                <p>{{text}}</p>
+            </div>
+            <hr/>
+            <div class="card-body">
+                <b>Time Taken to analyse: <span style="color:#0000FF;">{{time_final}} </span> Seconds </b>
+                <h1>Text Summary</h1>
+                <b>The Text Summary:</b>
+                {% for t in phrase_summary %}
+                <li>{{t}}
+                    <a href="https://www.dictionary.com/browse/{{t}}" target="blank_" type="button" class="btn btn-primary">Search</a>
+                </li>
+                {% endfor %}
+                
+                {% if lang != "" %}
+                    <div id="Mytranslator">
+                        <h1>Text Translation</h1>
+                        <b>Language Detected: <span style="color:#0000FF;">{{detect}} </span> Language </b>
+                        <br>
+                        <b>Text Translated:</b>
+                        <p id="fromDetectedLanguage">{{ lang }}</p>
+                    </div>
+                {% endif %}
+                
+            <h1>Text Sentiment Analysis</h1>
+            <table class="table table-striped table-dark"
+        <thead>
+        <tr>
+            <br>
+            <th scope="col">Sentiment</th>
+            <th scope="col">tokens</th>
+            <th scope="col">Sentiment_Polarity</th>
+            <th scope="col">Sentiment_Subjectivity</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+            <th scope="row">Sentiment_Score:</th>
+            <td>{{tokens}}</td>
+            <td>{{sentiment_blob}}</td>
+            <td>{{subjectivity_blob}}</td>
+            </tr>
+    </tbody></table>
+    
+</form>
+
+
+<br>
+<div class="container">
+    <form action="{{url_for('myText_Speech')}}" method="POST" id="myForm3">
+    <title>Browser voices</title>
+    <style type="text/css">
+                            * {
+                      box-sizing: border-box;
+                    }
+                    html,
+                    body {
+                      min-height: 100vh;
+                      margin: 0;
+                      padding: 0;
+                    }
+                    body {
+                      font-family: Helvetica, Arial, sans-serif;
+                      color: #0d122b;
+                      display: flex;
+                      flex-direction: column;
+                      padding-left: 1em;
+                      padding-right: 1em;
+                    }
+                    header {
+                      border-bottom: 1px solid #0000FF;
+                      margin-bottom: 2em;
+                    }
+                    main {
+                      flex-grow: 2;
+                      display: flex;
+                      justify-content: space-around;
+                      align-items: center;
+                      background-color: #fff;
+                      border-radius: 12px;
+                      margin-bottom: 2em;
+                    }
+                    
+                    main.speaking {
+                      animation: bg-pulse 1.5s alternate ease-in-out infinite;
+                    }
+                    
+                    .input {
+                      text-align: center;
+                      width: 100%;
+                    }
+                    
+                    .field {
+                        
+                      margin-bottom: 2em;
+                      
+                      
+                    }
+                    
+                    .field input {
+                    
+                    
+                     font-size: 150%;
+                     height: 50px;
+                     width: 1125px;
+                    }
+                    
+                    button {
+                      font-size: 13px;
+                      font-weight: 100;
+                      padding: 1em;
+                      width: 100px;
+                      background: transparent;
+                      border: 4px solid #B0E0E6;
+                      border-radius: 4px;
+                      transition: all 0.4s ease 0s;
+                      cursor: pointer;
+                      color: #a9a9a9;
+                      margin-bottom: 2em;
+                    }
+                    
+                    button:hover,
+                    button:focus {
+                      background: #f22f46;
+                      color: #fff;
+                    }
+                    
+                    a {
+                      color: #0d122b;
+                    }
+                    .error {
+                      color: #f22f46;
+                      text-align: center;
+                    }
+                    footer {
+                      border-top: 1px solid #0000FF;
+                      text-align: center;
+                    }
+    </style>
+    
+    <header>
+        <h1>Text to Speech</h1>
+    </header>
+    
+        
+    <form class="input" id="voice-form" method="post">
+        <div  class="field">
+            <label for="speech">Type Something</label>
+            <input type="text" name="speech" id="speech" required />
+        </div>
+        
+        <div class="field">
+            <label for="voices">Choose a Voice Assistant</label>
+                <select name="voices" id="voices">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                </div>
+                
+              <a href="{{url_for('NLPPage')}}" type="button" class="btn btn-primary">Reset</a>
+              <input type="submit" name="saveSpeech" id="SpeechButton1" value="save" class="btn btn-primary"/>
+              <button>
+                    <input type="submit" name="Speech" id="SpeechButton" value="say it!" class="btn btn-primary"/>
+                    <br>
+              </button>
+    
+    </form>
+    
+    
+
+
+    <footer>
+        <p>
+            Built by <a href=<BLOG LINK>>Tolga Macit s5115898<</a>
+        </p>
+    </footer>
+        
+
+
+    </form>
+</div>
+    
+    
+
+
+
+{% endblock %}

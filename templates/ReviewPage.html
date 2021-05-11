@@ -1,0 +1,38 @@
+{% from '_formhelpers.html' import render_field %}
+
+<!doctype html>
+<html>
+ <head>
+ <title>UserReview Page</title>
+ <body style="background-color:#C0C0C0;">
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ </head>
+ <body>
+ 
+<h2>Please Enter your Review</h2>
+<form method=post action="/results">
+ <dl>
+ {{ render_field(form.UserReview, cols="30", rows="10") }}
+ </dl>
+ 
+ 
+ <div>
+ <input type=submit value="Submit review" name="submit_btn">
+ </div>
+ 
+ <div class="bd-example" align="middle">
+ 
+<img src="{{url_for('static', filename='UserReview.png')}}" align="middle" />
+<img src="{{url_for('static', filename='sentiment_score_comparsion.png')}}" align="left" />
+<img src="{{url_for('static', filename='frequentwords_userreview.png')}}" align="right" />
+
+        
+</div>
+
+ 
+
+</form>
+
+<p align="center"><a href="/" ><button class="btn btn-primary" style="height:40px;width:60px">Home</button></a></p>
+</body>
+</html>

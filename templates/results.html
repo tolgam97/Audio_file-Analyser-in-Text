@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+ <head>
+ <title>User Review Results</title>
+ <body style="background-color:#C0C0C0;">
+ <link rel="stylesheet" href="{{ url_for('static', filename='ReviewPageStyle.css') }}">
+ </head>
+ <body>
+<h3>User Review:</h3>
+<div>{{ content }}</div>
+<h3>Prediction:</h3>
+<div>The User Review is <strong>{{ prediction }}</strong>
+ (probability: {{ probability }}%).</div>
+
+<div id="button">
+ <form action="/ReviewPage">
+ <input type="submit" value="Submit another review">
+ </form>
+</div>
+
+
+</body>
+</html>
+
