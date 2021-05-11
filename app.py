@@ -26,7 +26,7 @@ from gtts import gTTS
 
 import sqlite3
 import numpy as np
-from sklearn.externals import joblib
+import joblib
 
 
 
