@@ -28,7 +28,7 @@ import sqlite3
 import numpy as np
 import joblib
 
-
+import gunicorn
 
 
 loaded_model=joblib.load("./pkl_objects/model.pkl")
