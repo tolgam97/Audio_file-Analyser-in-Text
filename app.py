@@ -26,9 +26,9 @@ from gtts import gTTS
 
 import sqlite3
 import numpy as np
-from sklearn.externals import joblib
+import joblib
 
-
+import gunicorn
 
 
 loaded_model=joblib.load("./pkl_objects/model.pkl")
