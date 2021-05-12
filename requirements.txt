@@ -1,7 +1,7 @@
 textblob==0.15.3
 numpy==1.20.3
 pandas==1.2.4
-pyttsx3==2.90
+pyttsx3==2.71
 Flask_Bootstrap==3.3.7.1
 gunicorn==20.1.0
 Flask_WTF==0.14.3
